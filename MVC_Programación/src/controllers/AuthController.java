@@ -10,12 +10,12 @@ public class AuthController {
 		view = new AuthView(this,model);
 	}
 	public void login() {
-		view.login("titulo");
+		view.login();
 	}
 	public boolean verificarCredenciales(String usuario, String contraseña) {
         return model.access(usuario, contraseña);
     }
 	public void register() {
-		
+		view.registro();
 	}
 }
