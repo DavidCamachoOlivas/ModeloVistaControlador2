@@ -17,7 +17,7 @@ public class AuthModel {
 			
 			while((usuario = lector.readLine()) !=null) {
 				String [] datos = usuario.split("\\|");
-				if(datos.length == 7) {
+				if(datos.length == 8) {
 					String mail = datos[4].trim();
 					String contra = datos[5].trim();
 					if(user.equals(mail) && pass.equals(contra)) {

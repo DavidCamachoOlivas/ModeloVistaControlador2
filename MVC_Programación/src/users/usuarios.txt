@@ -1,3 +1,7 @@
 
 d|ol|VS|empl|danielcmini|1234|1234|daniel@c.mini
 david|co|siseflu|presidente|dvd|0722|0722|davco@sise.flu
+eduardo|rios|uabcs|epleado|Lalin3|duper@3|duper@3|fuffifigo
+Luis Miguel|Lucatero Perez|Cyrtocarpa|Gerente|dascagada|hola123?|hola123?|luluca_cyrtocarpa@gmail.com
+Romina|Barrios|siseflu|ceo|mina|pollofrito|pollofrito|pollo@sise.flu
+josé eduardo|güereque de anda|siseflu|jefe|wereke123|1234|1234|were@siseflu.com.mx
