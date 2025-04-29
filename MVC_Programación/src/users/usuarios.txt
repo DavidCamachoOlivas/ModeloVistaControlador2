@@ -1,1 +1,3 @@
-David|Camacho|Siseflu|Tecnologia|Presidente|DavCO|davCO@sise.flu|0722
+
+d|ol|VS|empl|danielcmini|1234|1234|daniel@c.mini
+david|co|siseflu|presidente|dvd|0722|0722|davco@sise.flu

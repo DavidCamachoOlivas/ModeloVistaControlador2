@@ -491,7 +491,7 @@ public class AuthView extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isWhitespace(c)) {
+				if(Character.isWhitespace(c)) {
 					e.consume();
 				}
 			}
@@ -524,7 +524,7 @@ public class AuthView extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isWhitespace(c)) {
+				if(Character.isWhitespace(c)) {
 					e.consume();
 				}
 			}
@@ -557,7 +557,7 @@ public class AuthView extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isWhitespace(c)) {
+				if(Character.isWhitespace(c)) {
 					e.consume();
 				}
 			}
