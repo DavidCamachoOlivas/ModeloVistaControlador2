@@ -39,14 +39,14 @@ public class AuthView extends JFrame {
 		altaUser = new AuthModel();
 	}
 
-	public JPanel login() {
+	public JFrame login() {
 		
 		setTitle("login");
-	    setBounds(100, 100, 750, 700);
-	    setResizable(true);
-	    setLayout(new BorderLayout());
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setLocationRelativeTo(null);
+		setBounds(100, 100, 750, 700);
+		setResizable(true);
+		setLayout(new BorderLayout());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 
 	    Font titulos = new Font("Inika", Font.BOLD, 32);
 	    Font subtitulos = new Font("Inika", Font.ROMAN_BASELINE, 22);
@@ -176,27 +176,31 @@ public class AuthView extends JFrame {
 				String contraseña= new String(contraInp.getPassword());
 				Boolean flag1=false,flag2=false;
 				
-				if(contraseña.equals("")) {
-					contraInp.setBorder(BorderFactory.createLineBorder(Color.red,2));
-				}
-				else {
-					contraInp.setBorder(BorderFactory.createLineBorder(Color.green,2));
-					flag1=true;
-				}
+				
 				if(usuario.equals("")) {
 					nombreInp.setBorder(BorderFactory.createLineBorder(Color.red,2));
+					JOptionPane.showMessageDialog(AuthView.this, "No se agregó nombre de usuario","Error al acceder",JOptionPane.WARNING_MESSAGE);
 				}
 				else {
-					nombreInp.setBorder(BorderFactory.createLineBorder(Color.green,2));
 					flag2=true;
+				}
+				if(contraseña.equals("")) {
+					contraInp.setBorder(BorderFactory.createLineBorder(Color.red,2));
+					JOptionPane.showMessageDialog(AuthView.this, "No se agregó contraseña","Error al acceder",JOptionPane.WARNING_MESSAGE);
+				}
+				else {
+					flag1=true;
 				}
 				if(flag1&&flag2) {
 					boolean user_auth = model.access(usuario,contraseña);
 					if(user_auth) {
+						nombreInp.setBorder(BorderFactory.createLineBorder(Color.green,2));
+						contraInp.setBorder(BorderFactory.createLineBorder(Color.green,2));
 						JOptionPane.showMessageDialog(AuthView.this, "Usuario ingresado con exito.");
+						manager("home");
 					}
 					else {
-						JOptionPane.showMessageDialog(AuthView.this, "Correo o contraseña incorrectas","Error al acceder",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(AuthView.this, "Usuario o contraseña incorrectas","Error al acceder",JOptionPane.WARNING_MESSAGE);
 					}
 				}
 			}});
@@ -205,13 +209,13 @@ public class AuthView extends JFrame {
 		ir_a_registro.setSize(200,50);
 		ir_a_registro.setLocation(25,450);
 		ir_a_registro.setBackground(null);
-		ir_a_registro.setVisible(true);
 		ir_a_registro.setOpaque(true);
 		ir_a_registro.setForeground(Color.white);
 		ir_a_registro.setBorderPainted(false);
 		ir_a_registro.setFont(texto);
 		ir_a_registro.setFocusPainted(true);
 		ir_a_registro.setContentAreaFilled(false);
+		ir_a_registro.setVisible(true);
 		ir_a_registro.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unlikely-arg-type")
@@ -228,7 +232,7 @@ public class AuthView extends JFrame {
 		
         setVisible(true);
 		
-        return fondo;
+        return this;
 	}
 	
 	public JPanel registro() {
@@ -237,13 +241,13 @@ public class AuthView extends JFrame {
 		Font texto = new Font("Inika", Font.ROMAN_BASELINE, 16);
 		
 		
-		JPanel login = new JPanel();
-		login.setLocation(0,0);
-		login.setSize(1000, 700);
-		login.setOpaque(true);
-		login.setBackground(Color.black);
-		login.setVisible(true);
-		login.setLayout(null);
+		JPanel registro = new JPanel();
+		registro.setLocation(0,0);
+		registro.setSize(1000, 700);
+		registro.setOpaque(true);
+		registro.setBackground(Color.black);
+		registro.setVisible(true);
+		registro.setLayout(null);
 		
 		
 		
@@ -256,7 +260,7 @@ public class AuthView extends JFrame {
 		etiqueta1.setForeground(Color.decode("#bdc2bc")); 
 		etiqueta1.setLayout(null);
 		
-		login.add(etiqueta1);
+		registro.add(etiqueta1);
 		
 		JLabel titulo = new JLabel("Registro");
 		
@@ -747,7 +751,7 @@ public class AuthView extends JFrame {
 				
 				manager("login");
 			}});
-		return login;
+		return registro;
 	}
 	
 	public JPanel home() {
@@ -768,6 +772,13 @@ public class AuthView extends JFrame {
 	    homeFondo.setLayout(null);
 	    add(homeFondo); 
 	    
+	    JLabel titulo = new JLabel("titulo");
+	    titulo.setBounds(250,50,70,30);
+	    titulo.setBackground(Color.black);
+	    titulo.setOpaque(true);
+	    
+	    homeFondo.add(titulo);
+	    
 	    return homeFondo;
 	}
 	
@@ -778,6 +789,9 @@ public class AuthView extends JFrame {
 		}
 		if(target.equals("registro")) {
 			this.add(registro());
+		}
+		if(target.equals("home")) {
+			this.add(home());
 		}
 		this.repaint();
 		this.revalidate();
