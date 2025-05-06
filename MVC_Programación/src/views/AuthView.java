@@ -28,11 +28,13 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controllers.AuthController;
+import controllers.homeController;
 import models.AuthModel;
 
 public class AuthView extends JFrame {
 	private AuthModel model,altaUser;
 	private AuthController controller;
+	private homeController home;
 	public AuthView(AuthController controller, AuthModel model) {
 		this.controller = controller;
 		this.model = model;
@@ -197,7 +199,9 @@ public class AuthView extends JFrame {
 						nombreInp.setBorder(BorderFactory.createLineBorder(Color.green,2));
 						contraInp.setBorder(BorderFactory.createLineBorder(Color.green,2));
 						JOptionPane.showMessageDialog(AuthView.this, "Usuario ingresado con exito.");
-						manager("home");
+						dispose();
+						homeController controller = new homeController();
+						controller.home();
 					}
 					else {
 						JOptionPane.showMessageDialog(AuthView.this, "Usuario o contraseña incorrectas","Error al acceder",JOptionPane.WARNING_MESSAGE);
@@ -235,12 +239,18 @@ public class AuthView extends JFrame {
         return this;
 	}
 	
-	public JPanel registro() {
+	public JFrame registro() {
 		Font titulos = new Font("Inika", Font.BOLD, 32);
 		Font subtitulos = new Font("Inika", Font.ROMAN_BASELINE, 22);
 		Font texto = new Font("Inika", Font.ROMAN_BASELINE, 16);
 		
-		
+		//JFrame frameRegistro = new JFrame();
+		setTitle("login");
+		setBounds(100, 100, 750, 700);
+		setResizable(true);
+		setLayout(new BorderLayout());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		JPanel registro = new JPanel();
 		registro.setLocation(0,0);
 		registro.setSize(1000, 700);
@@ -248,6 +258,7 @@ public class AuthView extends JFrame {
 		registro.setBackground(Color.black);
 		registro.setVisible(true);
 		registro.setLayout(null);
+		add(registro);
 		
 		
 		
@@ -751,48 +762,27 @@ public class AuthView extends JFrame {
 				
 				manager("login");
 			}});
-		return registro;
+		setVisible(true);
+		return this;
 	}
 	
-	public JPanel home() {
-		setBounds(100, 100, 750, 700);
-	    setResizable(true);
-	    setLayout(new BorderLayout());
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setLocationRelativeTo(null);
-
-	    Font titulos = new Font("Inika", Font.BOLD, 32);
-	    Font subtitulos = new Font("Inika", Font.ROMAN_BASELINE, 22);
-	    Font texto = new Font("Inika", Font.ROMAN_BASELINE, 16);
-
-	    
-	    JPanel homeFondo = new JPanel();
-	    homeFondo.setBounds(0, 0, 750, 700);
-	    homeFondo.setBackground(new Color(0, 128, 128));
-	    homeFondo.setLayout(null);
-	    add(homeFondo); 
-	    
-	    JLabel titulo = new JLabel("titulo");
-	    titulo.setBounds(250,50,70,30);
-	    titulo.setBackground(Color.black);
-	    titulo.setOpaque(true);
-	    
-	    homeFondo.add(titulo);
-	    
-	    return homeFondo;
-	}
+	
 	
 	public void manager(String target) {
 		this.getContentPane().removeAll();
 		if(target.equals("login")) {
-			this.add(login());
+			dispose();
+			login();
+			//this.getContentPane().add(login());
 		}
 		if(target.equals("registro")) {
-			this.add(registro());
+			dispose();
+			registro();
+			//this.getContentPane().add(registro());
 		}
-		if(target.equals("home")) {
-			this.add(home());
-		}
+		/*if(target.equals("home")) {
+			this.add(home.home());
+		}*/
 		this.repaint();
 		this.revalidate();
 	}

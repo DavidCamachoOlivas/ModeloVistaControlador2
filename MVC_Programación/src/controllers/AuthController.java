@@ -1,9 +1,11 @@
 package controllers;
 import models.AuthModel;
 import views.AuthView;
+import views.homeView;
 
 public class AuthController {
-	AuthView view;
+	private AuthView view;
+	
 	private AuthModel model;
 	public AuthController() {
 		model = new AuthModel();
@@ -18,4 +20,5 @@ public class AuthController {
 	public void register() {
 		view.registro();
 	}
+	
 }
